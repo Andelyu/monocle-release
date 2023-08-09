@@ -1127,8 +1127,8 @@ orderCells <- function(cds,
     old_mst <- minSpanningTree(cds)
     old_A <- reducedDimA(cds)
     old_W <- reducedDimW(cds)
-
-    cds <- project2MST(cds, Projection_Method) #project_point_to_line_segment can be changed into other states, the parameter project_point_to_line_segment has  changed to Projection_Method
+    Projection_Method=cds@dim_reduce_type
+    cds <- project2MST(cds, Projection_Method ) #project_point_to_line_segment can be changed into other states, the parameter project_point_to_line_segment has  changed to Projection_Method
     minSpanningTree(cds) <- cds@auxOrderingData[[cds@dim_reduce_type]]$pr_graph_cell_proj_tree
 
     root_cell_idx <- which(V(old_mst)$name == root_cell, arr.ind=T)
